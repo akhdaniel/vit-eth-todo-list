@@ -3,10 +3,6 @@ pragma solidity ^0.5.0;
 contract TodoList {
 	uint public taskCount = 0;
 
-	constructor() public {
-		createTask("Tuntaskan materi blockchain fundamental");
-	}
-
 
 	struct Task { 
 		uint id;
@@ -28,6 +24,12 @@ contract TodoList {
 		tasks[taskCount] = Task(taskCount, _content, false);
 		emit TaskCreated(taskCount, _content, false);
 	}
+
+
+	constructor() public {
+		createTask("Tuntaskan materi blockchain fundamental");
+	}
+
 
 	event TaskCompleted( 
 		uint id,
