@@ -38,7 +38,8 @@ App = {
 		}
 	},
 	loadAccount: async () => {
-		// Set the current blockchain account App.account = web3.eth.accounts[0]
+		// Set the current blockchain account 
+		App.account = web3.eth.accounts[0]
 	},
 	loadContract: async () => {
 		// Create a JavaScript version of the smart contract 
@@ -78,7 +79,7 @@ App = {
 			$newTaskTemplate.find('input')
 				.prop('name', taskId) 
 				.prop('checked', taskCompleted)
-				.on('click', App.toggleCompleted)
+				// .on('click', App.toggleCompleted)
 			// Put the task in the correct list
 			if (taskCompleted) { 
 				$('#completedTaskList').append($newTaskTemplate)
@@ -101,29 +102,7 @@ App = {
 			content.show() 
 		}
 	},
-	createTask: async () => { 
-		App.setLoading(true)
-		const content = $('#newTask').val() 
-		try{
-			await App.todoList.createTask(content)
-			window.location.reload()
-		} catch (error) {
-			// User denied account access...
-			console.log(error);
-		} 
-
-	},  
-	toggleCompleted: async (e) => { 
-		App.setLoading(true)
-		const taskId = e.target.name
-		try{
-			await App.todoList.toggleCompleted(taskId) 
-		}
-		catch(error) {
-			console.log(error)
-		}
-		window.location.reload()
-	},  	
+ 	
 }
 
 $(() => {
